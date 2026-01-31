@@ -207,10 +207,10 @@ body {
   font-weight: normal;
 }
 
-/* Adaptive: smaller header and touch-friendly on narrow viewports */
+/* Adaptive: reserve enough space so wrapped header never overlaps cards (actual ~174px at 390px) */
 @media (max-width: 500px) {
   :root {
-    --header-height: 130px;
+    --header-height: 190px;
   }
 
   .animal-card-name {
@@ -220,9 +220,9 @@ body {
   }
 }
 
-/* Very small screens: reduce grid gap so cards stay large */
+/* Very small screens: reserve enough for header when short viewport */
 @media (max-height: 400px) {
   :root {
-    --header-height: 110px;
+    --header-height: 160px;
   }
 }

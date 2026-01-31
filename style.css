@@ -6,6 +6,7 @@
 
 :root {
   --header-height: 150px;
+  --safe-top: env(safe-area-inset-top, 0px);
 }
 
 body {
@@ -30,7 +31,7 @@ body {
 
 .header {
   position: fixed;
-  top: 0;
+  top: var(--safe-top);
   left: 0;
   right: 0;
   z-index: 10;
@@ -109,7 +110,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1rem;
-  padding-top: calc(var(--header-height) + 0.5rem);
+  padding-top: calc(var(--header-height) + var(--safe-top) + 0.5rem);
   min-height: 0;
   overflow: hidden;
   container-type: size;
@@ -202,7 +203,8 @@ body {
 
 @media (max-width: 500px) {
   :root {
-    --header-height: 140px;
+    /* Extra height so wrapped controls never overlap the cards */
+    --header-height: 180px;
   }
 
   .animal-card-name {

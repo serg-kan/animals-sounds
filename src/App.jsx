@@ -31,14 +31,12 @@ export function App() {
     setSelectedId(id);
   }, []);
 
-  // #region agent log
-  fetch('http://127.0.0.1:7244/ingest/36ae6032-ae37-4a00-9026-bcee082e700c',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'App.jsx:render',message:'animals state',data:{animalsLength:animals.length,count,firstId:animals[0]?.id},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'H2'})}).catch(()=>{});
-
   return (
     <div className="app">
       <Header
         count={count}
         onCountChange={handleCountChange}
+        onRefresh={handleRefresh}
       />
       <main className="main">
         <AnimalGrid
@@ -50,6 +48,4 @@ export function App() {
       </main>
     </div>
   );
-
-
 }
